@@ -10,11 +10,8 @@ import { hideBin } from "yargs/helpers";
 // Load environment variables
 dotenv.config();
 
-const DEFAULT_TEAM_STUB = "BKND";
-const USER_ID = "7fd08550-0898-4ff7-b81f-544f2519bb22";
-
-if (!process.env.LINEAR_API_KEY) {
-  console.error("Error: LINEAR_API_KEY is not set in your environment variables.");
+if (!process.env.LINEAR_API_KEY || !process.env.USER_ID || !process.env.DEFAULT_TEAM_STUB) {
+  console.error("Error: LINEAR_API_KEY, USER_ID, or DEFAULT_TEAM_STUB is not set in your environment variables.");
   process.exit(1);
 }
 
@@ -38,7 +35,7 @@ async function createIssueWithBranch(title: string, teamStub: string) {
     const issuePayload = await linearClient.createIssue({
       title,
       teamId: team.id,
-      assigneeId: USER_ID, // Assign to the provided user UUID
+      assigneeId: process.env.USER_ID,
     });
 
     if (!issuePayload.success || !issuePayload.issue) {
@@ -54,7 +51,16 @@ async function createIssueWithBranch(title: string, teamStub: string) {
       .replace(/^-+|-+$/g, "")
       .substring(0, 50); // Limit length to 50 characters
 
-    const branchName = `${teamStub.toLowerCase()}/${issue.identifier.toLowerCase()}-${sanitizedTitle}`;
+    // Fetch the user
+    if (!process.env.USER_ID) {
+      throw new Error("USER_ID is not set in your environment variables.");
+    }
+    const user = await linearClient.user(process.env.USER_ID);
+    if (!user) {
+      throw new Error("Failed to fetch user");
+    }
+
+    const branchName = `${user.name.toLowerCase().replace(/\s+/g, '')}/${issue.identifier.toLowerCase()}-${sanitizedTitle}`;
 
     return { issue, branchName };
   } catch (error) {
@@ -78,7 +84,7 @@ async function main() {
             alias: "t",
             type: "string",
             description: "Team stub (e.g., bknd, frtd)",
-            default: DEFAULT_TEAM_STUB,
+            default: process.env.DEFAULT_TEAM_STUB,
           })
           .option("open", {
             alias: "o",
