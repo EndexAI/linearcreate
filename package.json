@@ -1,0 +1,26 @@
+{
+  "name": "linearcreate",
+  "version": "1.0.0",
+  "main": "dist/lco.js",
+  "bin": {
+    "lco": "dist/lco.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "start": "ts-node src/lco.ts",
+    "start:dev": "ts-node src/lco.ts",
+    "start:prod": "npm run build && node dist/lco.js"
+  },
+  "dependencies": {
+    "@linear/sdk": "^27.0.0",
+    "clipboardy": "^2.3.0",
+    "dotenv": "^16.0.0",
+    "open": "^8.4.0",
+    "yargs": "^17.0.1"
+  },
+  "devDependencies": {
+    "@types/yargs": "^17.0.33",
+    "ts-node": "^10.0.0",
+    "typescript": "^5.2.0"
+  }
+}
