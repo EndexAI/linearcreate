@@ -1,6 +1,7 @@
 {
   "name": "linearcreate",
   "version": "1.0.0",
+  "description": "A CLI tool to create Linear issues and generate branch names",
   "main": "dist/lco.js",
   "bin": {
     "lco": "dist/lco.js"
@@ -9,7 +10,8 @@
     "build": "tsc",
     "start": "ts-node src/lco.ts",
     "start:dev": "ts-node src/lco.ts",
-    "start:prod": "npm run build && node dist/lco.js"
+    "start:prod": "npm run build && node dist/lco.js",
+    "prepublish": "npm run build"
   },
   "dependencies": {
     "@linear/sdk": "^27.0.0",
@@ -22,5 +24,21 @@
     "@types/yargs": "^17.0.33",
     "ts-node": "^10.0.0",
     "typescript": "^5.2.0"
-  }
+  },
+  "keywords": [
+    "linear",
+    "cli",
+    "issue-tracker",
+    "branch-name-generator"
+  ],
+  "author": "Tarun Amasa",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tarunamasa/linearcreate.git"
+  },
+  "bugs": {
+    "url": "https://github.com/tarunamasa/linearcreate/issues"
+  },
+  "homepage": "https://github.com/tarunamasa/linearcreate#readme"
 }
