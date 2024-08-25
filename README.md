@@ -14,17 +14,20 @@ lc (Linear Create and Open) is a command-line interface tool that simplifies the
 ## Installation
 
 1. Clone this repository:
+
    ```
    git clone https://github.com/yourusername/lc.git
    cd lc
    ```
 
 2. Install dependencies:
+
    ```
    npm install
    ```
 
 3. Create a `.env` file in the project root and add the following environment variables:
+
    ```
    LINEAR_API_KEY=your_linear_api_key
    USER_ID=your_linear_user_id
@@ -32,11 +35,13 @@ lc (Linear Create and Open) is a command-line interface tool that simplifies the
    ```
 
 4. Build the project:
+
    ```
    npm run build
    ```
 
 5. Make the CLI tool globally accessible:
+
    ```
    npm link
    ```
@@ -44,7 +49,6 @@ lc (Linear Create and Open) is a command-line interface tool that simplifies the
 ## Usage
 
 lc <ticketName> [options]
-
 
 ### Options
 
@@ -55,16 +59,19 @@ lc <ticketName> [options]
 ### Examples
 
 1. Create an issue and copy the branch name to clipboard:
+
    ```
    lc "Implement user authentication"
    ```
 
 2. Create an issue for a specific team and open it in the browser:
+
    ```
    lc "Fix pagination bug" -t bknd -o
    ```
 
 3. Show help information:
+
    ```
    lc --help
    ```
