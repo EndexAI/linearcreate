@@ -6,9 +6,10 @@ import dotenv from "dotenv";
 import open from "open";
 import yargs from "yargs";
 import { hideBin } from "yargs/helpers";
+import path from 'path';
 
 // Load environment variables
-dotenv.config();
+dotenv.config({ path: path.join(__dirname, '..', '.env') });
 
 if (!process.env.LINEAR_API_KEY || !process.env.USER_ID || !process.env.DEFAULT_TEAM_STUB) {
   console.error("Error: LINEAR_API_KEY, USER_ID, or DEFAULT_TEAM_STUB is not set in your environment variables.");
