@@ -18,7 +18,7 @@ if (!process.env.LINEAR_API_KEY || !process.env.USER_ID || !process.env.DEFAULT_
 
 const linearClient = new LinearClient({ apiKey: process.env.LINEAR_API_KEY });
 
-async function createIssueWithBranch(title: string, teamStub: string) {
+async function createIssueWithBranch(title: string, teamStub: string, description?: string) {
   try {
     // Fetch the organization
     const organization = await linearClient.organization;
@@ -37,6 +37,7 @@ async function createIssueWithBranch(title: string, teamStub: string) {
       title,
       teamId: team.id,
       assigneeId: process.env.USER_ID,
+      description: description,
     });
 
     if (!issuePayload.success || !issuePayload.issue) {
@@ -92,6 +93,11 @@ async function main() {
             type: "boolean",
             description: "Open the ticket in Linear",
             default: false,
+          })
+          .option("description", {
+            alias: "d",
+            type: "string",
+            description: "Description for the Linear issue",
           });
       }
     )
@@ -101,7 +107,8 @@ async function main() {
   try {
     const { issue, branchName } = await createIssueWithBranch(
       argv.ticketName as string,
-      argv.teamstub as string
+      argv.teamstub as string,
+      argv.description as string | undefined
     );
 
     if (argv.open) {

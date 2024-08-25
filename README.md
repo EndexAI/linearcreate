@@ -54,6 +54,7 @@ lc <ticketName> [options]
 
 - `-t, --teamstub <stub>`: Specify the team stub (e.g., bknd, frtd). Defaults to the value in DEFAULT_TEAM_STUB.
 - `-o, --open`: Open the created issue in Linear using the default web browser.
+- `-d, --description <text>`: Add a description to the Linear issue.
 - `--help`: Show help information.
 
 ### Examples
@@ -70,7 +71,13 @@ lc <ticketName> [options]
    lc "Fix pagination bug" -t bknd -o
    ```
 
-3. Show help information:
+3. Create an issue with a description:
+
+   ```
+   lc "Add new API endpoint" -d "This endpoint will handle user profile updates"
+   ```
+
+4. Show help information:
 
    ```
    lc --help
