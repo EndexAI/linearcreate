@@ -2,15 +2,15 @@
   "name": "linearcreate",
   "version": "1.0.0",
   "description": "A CLI tool to create Linear issues and generate branch names",
-  "main": "dist/lco.js",
+  "main": "dist/lc.js",
   "bin": {
-    "lco": "dist/lco.js"
+    "lc": "dist/lc.js"
   },
   "scripts": {
     "build": "tsc",
-    "start": "ts-node src/lco.ts",
-    "start:dev": "ts-node src/lco.ts",
-    "start:prod": "npm run build && node dist/lco.js",
+    "start": "ts-node src/lc.ts",
+    "start:dev": "ts-node src/lc.ts",
+    "start:prod": "npm run build && node dist/lc.js",
     "prepublish": "npm run build"
   },
   "dependencies": {

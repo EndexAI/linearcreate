@@ -1,6 +1,6 @@
-# Linear CLI Tool (LCO)
+# Linear CLI Tool (lc)
 
-LCO (Linear Create and Open) is a command-line interface tool that simplifies the process of creating Linear issues and generating corresponding branch names. It integrates with the Linear API to create issues and provides options for opening the issue in the browser or copying a generated branch name to the clipboard.
+lc (Linear Create and Open) is a command-line interface tool that simplifies the process of creating Linear issues and generating corresponding branch names. It integrates with the Linear API to create issues and provides options for opening the issue in the browser or copying a generated branch name to the clipboard.
 
 ## Features
 
@@ -15,8 +15,8 @@ LCO (Linear Create and Open) is a command-line interface tool that simplifies th
 
 1. Clone this repository:
    ```
-   git clone https://github.com/yourusername/lco.git
-   cd lco
+   git clone https://github.com/yourusername/lc.git
+   cd lc
    ```
 
 2. Install dependencies:
@@ -43,7 +43,7 @@ LCO (Linear Create and Open) is a command-line interface tool that simplifies th
 
 ## Usage
 
-lco <ticketName> [options]
+lc <ticketName> [options]
 
 
 ### Options
@@ -56,22 +56,22 @@ lco <ticketName> [options]
 
 1. Create an issue and copy the branch name to clipboard:
    ```
-   lco "Implement user authentication"
+   lc "Implement user authentication"
    ```
 
 2. Create an issue for a specific team and open it in the browser:
    ```
-   lco "Fix pagination bug" -t bknd -o
+   lc "Fix pagination bug" -t bknd -o
    ```
 
 3. Show help information:
    ```
-   lco --help
+   lc --help
    ```
 
 ## Contributing
 
-Contributions are welcome! Please feel free to submit a Pull Request.
+Contributions are welcme! Please feel free to submit a Pull Request.
 
 ## License
 
